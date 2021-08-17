@@ -1,0 +1,36 @@
+{
+	"c_august": {
+		"c_august_1": {
+			"company": "AUGUST（オーガスト）",
+			"name": "バイナリィ・ポット",
+			"cname": "Binary Pot",
+			"date": "2002-02-22",
+			"fan": "AUGUST中文化委員會",
+			"yn": "漢化完成",
+			"hpweb": "https://www.august-soft.com/binary_normal/",
+			"website": "http://www.getchu.com/soft.phtml?id=9824"
+		},
+		"c_august_2": {
+			"company": "AUGUST（オーガスト）",
+			"name": "Princess Holiday～転がるりんご亭千夜一夜～",
+			"cname": "公主假日～迴轉蘋果亭的一千零一夜～",
+			"date": "2002-09-27",
+			"fan": "AUGUST中文化委員會",
+			"yn": "漢化完成",
+			"hpweb": "https://august-soft.com/princess_holiday/index.htm",
+			"website": "http://www.getchu.com/soft.phtml?id=15123"
+		}
+	},
+	"c_akabeisoft2": {
+		"c_akabeisoft2_1": {
+			"company": "AKABEiSOFT2",
+			"name": "その横顔を見つめてしまう",
+			"cname": "凝視那側臉",
+			"date": "2005-01-21",
+			"fan": "Galm鼠爺個人漢化 / 薄荷漢化組",
+			"yn": "漢化完成",
+			"hpweb": "",
+			"website": "http://www.getchu.com/soft.phtml?id=225185"
+		}
+	}
+}
