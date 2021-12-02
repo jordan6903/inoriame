@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link REL="stylesheet" HREF="D:/notosanstc.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.1/jquery.fancybox.js"></script>
+  <link REL="stylesheet" HREF="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.1/jquery.fancybox.css">
+<style>
+
+  #pic_show_h{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    justify-content: center; 
+    align-items: center; 
+    z-index: 498;
+  }
+
+  #show2_h{
+    z-index: 500;
+    position: fixed;
+    margin: auto;
+    text-align: center;
+  }
+  #show2_h img{
+    max-height: 900px;
+  }
+
+
+  a .show{
+    href: "#";
+    cursor: help;
+    text-decoration: none;
+  }
+
+  table#pic_table{
+    width: 100%;
+  }
+  p.show2{
+    margin-top: 0px;
+  }
+
+  p{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  p#div_show_name{
+    margin:0 auto;
+
+  }
+
+  .website{
+    padding: 3px 6px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    display: inline-block;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  table#div_detail_table{
+    margin-left: 10px;
+    width: 540px;
+    table-layout: fixed;
+    font-family: '微軟正黑體';
+    background-color: #FCFCFC;
+    font-size: 16px;
+  }
+
+  table#div_detail_table .table_title{
+    text-align: right;
+    width: 130px;
+    border-right: 1px solid #eee;
+    padding-right: 8px;
+    vertical-align: text-top;
+  }
+
+  table#div_detail_table .table_detail{
+    text-align: left;
+    padding-left: 8px;
+    max-width: 400px;
+    word-wrap: break-word;
+  }
+
+  #exit_icon{
+    z-index: 501;
+    position: fixed !important;
+    right: 20px;
+    top: 20px;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+  }
+
+  #game_title{
+    clip-path: polygon(4% 0, 100% 0, 100% 100%, 0 100%, 0% 38%);
+    background-color: #D2E9FF;
+    margin-left: 20px;
+    width: 500px;
+    height: 50px;
+    position: relative;
+  }
+  #div_show_name{
+    font-size: 20px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+
+.clips{
+  clip-path: polygon(95% 0, 100% 50%, 95% 100%, 0 100%, 0 0);
+  background-color: #D2E9FF;
+  margin-left: 20px;
+  width: 300px;
+  height: 50px;
+  float: left;
+  /*text-align: center;*/
+  display: flex;
+  align-items: center;
+}
+
+.clips_value{
+  margin:0 auto;
+}
+</style>
+
+</head>
+<script>
+var url = decodeURI(location.href);
+
+var temp = url.split("?");
+var vars = temp[1].split("=");
+
+	//var gid = this.id;
+  //document.getElementById('pic_show').style.display = 'flex';
+
+var gid = vars[1];
+
+$(function(){
+  $.getJSON("https://raw.githubusercontent.com/jordan6903/inoriame/master/package4.json",
+  function(json){
+    var e = json.title;
+
+    for(var i = 0; i < e.length; i++){
+      if(e[i].gid==gid){
+        gamename = e[i].name;
+        gamecname = e[i].cname;
+        company = e[i].company;
+        releaseday = e[i].date;
+        fan = e[i].fan;
+        yn = e[i].yn;
+        pic = e[i].pic;
+        pic_w = e[i].picw;
+        pic_h = e[i].pich;
+        dlsite = e[i].dlsite;
+        hpweb = e[i].hpweb;
+        website = e[i].website;
+        trailer = e[i].trailer;
+        other = e[i].other;
+
+        break;
+      }
+    }
+  
+
+
+//===============================================//
+
+    if(gamecname=='nan'){ //中文名稱
+      document.getElementById('div_show_cname').innerHTML = '';
+    }else{
+      document.getElementById('div_show_cname').innerHTML = gamecname;
+    }
+
+    document.getElementById('div_show_company').innerHTML = company; //製作公司
+    document.getElementById('div_show_date').innerHTML = releaseday; //發售日
+    document.getElementById('div_show_fan').innerHTML = fan; //漢化組
+    document.getElementById('div_show_yn').innerHTML = yn;   //漢化進度
+
+    if(other=='nan'){ //備註
+      document.getElementById('div_show_other').innerHTML = '';
+    }else{
+      document.getElementById('div_show_other').innerHTML = other;
+    }
+
+//===============================================//
+
+    if(pic=='nan'){ //圖片為空值
+      pic='https://i.imgur.com/AtrCLui.jpeg';
+      pic_w='500';
+      pic_h='720';
+    }
+    document.getElementById('div_show_link').innerHTML=''; //清空之前的數值
+    document.getElementById('div_pic').innerHTML='<img src="'+pic+'" width="'+pic_w+'px" height="'+pic_h+'px"></td>';  //圖片
+
+/*
+    if(pic_w>pic_h){
+      alert('橫式');
+    }else if(pic_w<pic_h){
+      alert('直式');
+    }else{
+      alert('不明');
+    }
+*/ 
+
+
+    document.getElementById('div_show_name').innerHTML = gamename; //遊戲名稱
+
+    //網址連結
+    if(dlsite!='nan'){document.getElementById('div_show_link').innerHTML+='<a href="'+dlsite+'" target="_blank"><div class="website" style="background-color: #3FB9E9;">推薦DLsite</div></a>';}
+    if(hpweb!='nan'){document.getElementById('div_show_link').innerHTML+='<a href="'+hpweb+'" target="_blank"><div class="website" style="background-color: #3FB9E9;">HP</div></a>';}
+    if(website!='nan'){document.getElementById('div_show_link').innerHTML+='<a href="'+website+'" target="_blank"><div class="website" style="background-color: #FF6B81;">Getchu</div></a>';}
+    if(trailer!='nan'){document.getElementById('div_show_link').innerHTML+='<a href="'+trailer+'" target="_blank"><div class="website" style="background-color: #FF7E29;">Trailer</div></a>';}
+   
+}
+);
+});
+</script>
+<body>
+
+<table id="pic_table">
+  <tr>
+    <td>
+      <div id="div_pic" style="float: left;"></div>
+      <div class="div_detail" style="float: left;">
+        <div id="game_title"><p id="div_show_name"></p></div>
+        <table id="div_detail_table">
+          <!--<tr><td class="table_title"><p>遊戲名稱</p></td><td class="table_detail"><p class="div_show_name"></p></td></tr>-->
+          <tr><td class="table_title"><p>遊戲譯名</p></td><td class="table_detail"><p id="div_show_cname"></p></td></tr>
+          <tr><td class="table_title"><p>製作公司</p></td><td class="table_detail"><p id="div_show_company"></p></td></tr>
+          <tr><td class="table_title"><p>發售日期</p></td><td class="table_detail"><p id="div_show_date"></p></td></tr>
+          <tr><td class="table_title"><p>中文化/漢化團隊</p></td><td class="table_detail"><p id="div_show_fan"></p></td></tr>
+          <tr><td class="table_title"><p>中文化/漢化進度</p></td><td class="table_detail"><p id="div_show_yn"></p></td></tr>
+          <tr><td class="table_title"><p>備註</p></td><td class="table_detail"><p id="div_show_other"></p></td></tr>
+          <tr><td class="table_title"><p>網址連結</p></td><td class="table_detail"><p id="div_show_link"></p></td></tr>
+        </table>
+      </div>
+    </td>
+  </tr>
+</table>
+  
+
+</body>
+</html>
